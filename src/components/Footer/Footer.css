@@ -1,0 +1,26 @@
+.site-footer {
+  background: #4e4d4d;
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  border-top: 3px solid #000000;
+  font-weight: bold;
+}
+
+.site-footer-split{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+  background-color: #585858;
+  justify-items: center;
+}
+
+.headline-footer{
+  font-size: 18px;
+}
+
+.text{
+  font-size: 12px;
+  font-weight: lighter;
+}

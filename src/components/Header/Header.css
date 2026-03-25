@@ -1,0 +1,8 @@
+.site-header {
+  background: #4e4d4d;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.4rem;
+  border-bottom: 4px solid #000000;
+}

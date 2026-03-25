@@ -1,0 +1,17 @@
+.item-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4f46e5;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.item-card:hover {
+  transform: scale(1.05);
+  background-color: #6366f1;
+}
