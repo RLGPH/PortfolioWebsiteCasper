@@ -1,6 +1,26 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
+import GridShow from '../components/GridShow/GridShow';
 
 const Home = () => {
+  const [repos, setRepos] = useState([]);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const res = await fetch('http://[::1]:8080/api/Github');
+        const data = await res.json();
+        console.log('Fetched repos:', data);
+
+        const shuffled = [...data].sort(() => Math.random() - 0.5);
+
+        setRepos(shuffled.slice(0, 3));
+      } catch (err) {
+        console.error('Failed to fetch repos', err);
+      }
+    };
+
+    fetchRepos();
+  }, []);
 
   return (
     <div>
@@ -8,12 +28,27 @@ const Home = () => {
       <div>
         <p>This is the home page. Use the navigation to explore the app.</p>
       </div>
-      
+
+      <div>
+        <h1>3 Random GitHub Repositories</h1>
+
+        {repos.length > 0 ? (
+          <GridShow
+            allItems={repos}
+            columns={3} 
+            itemsPerPage={3} 
+            pagination={false} 
+          />
+        ) : (
+          <p>Loading repos...</p>
+        )}
+      </div>
+
       <div>
         <h2>About Me</h2>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
