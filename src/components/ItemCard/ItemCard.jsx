@@ -1,33 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './ItemCard.css';
 
-const ItemCard = ({ url }) => {
+// Simple in-memory cache
+const readmeCache = {};
+
+const ItemCard = ({ item }) => {
   const [readme, setReadme] = useState('');
+  const fetchedRef = useRef(false);
+
+  const url = item?.url;
   const name = url ? url.split('/').pop() : 'Unknown';
 
   useEffect(() => {
+    if (!url || fetchedRef.current) return;
+    fetchedRef.current = true;
+
     const fetchReadme = async () => {
       try {
-        if (!url) return;
+        if (readmeCache[url]) {
+          setReadme(readmeCache[url]);
+          return;
+        }
 
-        // Extract owner + repo from URL
         const parts = url.split('/');
         const owner = parts[3];
         const repo = parts[4];
 
         const res = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}/readme`
+          `https://api.github.com/repos/${owner}/${repo}/readme`,
+          {
+            headers: {
+              Accept: 'application/vnd.github.v3+json'
+            }
+          }
         );
 
-        if (!res.ok) throw new Error('No README');
+        if (!res.ok) {
+          setReadme('README unavailable (rate limited/none exist)');
+          return;
+        }
 
         const data = await res.json();
-
-        // Decode base64 content
         const decoded = atob(data.content);
-        setReadme(decoded);
-      } catch (err) {
-        console.warn('No README found for', name);
+
+        const cleaned = decoded.replace(/[#>*`]/g, '');
+
+        readmeCache[url] = cleaned;
+
+        setReadme(cleaned);
+      } catch {
         setReadme('No README available.');
       }
     };

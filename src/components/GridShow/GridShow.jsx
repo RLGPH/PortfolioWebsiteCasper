@@ -34,10 +34,9 @@ const GridShow = ({
           gridTemplateColumns: `repeat(${columns}, 1fr)`
         }}
       >
-        {currentItems.map((item, index) => {
-          const url = typeof item === 'string' ? item : item.url;
-          return <ItemCard key={index} url={url} />;
-        })}
+        {currentItems.map((item, index) => (
+          <ItemCard key={item.id || index} item={item} />
+        ))}
       </div>
 
       {/* Only show pagination if enabled */}
