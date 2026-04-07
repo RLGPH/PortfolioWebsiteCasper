@@ -1,70 +1,35 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemCard.css';
 
-// Simple in-memory cache
-const readmeCache = {};
-
 const ItemCard = ({ item }) => {
-  const [readme, setReadme] = useState('');
-  const fetchedRef = useRef(false);
-
-  const url = item?.url;
-  const name = url ? url.split('/').pop() : 'Unknown';
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (!url || fetchedRef.current) return;
-    fetchedRef.current = true;
-
-    const fetchReadme = async () => {
+    const fetchItem = async () => {
       try {
-        if (readmeCache[url]) {
-          setReadme(readmeCache[url]);
-          return;
-        }
+        const res = await fetch(`/api/items/${item.id}`);
+        if (!res.ok) throw new Error('Failed to fetch item');
+        const json = await res.json();
 
-        const parts = url.split('/');
-        const owner = parts[3];
-        const repo = parts[4];
-
-        const res = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}/readme`,
-          {
-            headers: {
-              Accept: 'application/vnd.github.v3+json'
-            }
-          }
-        );
-
-        if (!res.ok) {
-          setReadme('README unavailable (rate limited/none exist)');
-          return;
-        }
-
-        const data = await res.json();
-        const decoded = atob(data.content);
-
-        const cleaned = decoded.replace(/[#>*`]/g, '');
-
-        readmeCache[url] = cleaned;
-
-        setReadme(cleaned);
-      } catch {
-        setReadme('No README available.');
+        setData({ ...json, id: json.id ?? item.id });
+      } catch (err) {
+        console.error(err);
+        setData({ readme: 'No data available', url: item.url, id: item.id });
       }
     };
 
-    fetchReadme();
-  }, [url]);
+    if (!item.readme) fetchItem();
+    else setData({ ...item, id: item.id });
+  }, [item]);
+
+  if (!data) return <div className="item-card">Loading...</div>;
+
+  const localLink = `${window.location.origin}/github/${data.id ?? 0}`;
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="item-card"
-    >
-      <h3 className="repo-title">{name}</h3>
-      <p className="repo-readme">{readme}</p>
+    <a href={localLink} className="item-card">
+      <h3 className="repo-title">{data.url?.split('/').pop() || 'Unknown'}</h3>
+      <p className="repo-readme">{data.readme || 'No README available'}</p>
     </a>
   );
 };

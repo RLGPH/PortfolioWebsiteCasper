@@ -7,7 +7,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const res = await fetch('http://[::1]:8080/api/Github');
+        const res = await fetch('http://casp142b2.web.techcollege.dk/api/Github');
         const data = await res.json();
         console.log('Fetched repos:', data);
 
