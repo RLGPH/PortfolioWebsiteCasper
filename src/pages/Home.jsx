@@ -60,7 +60,13 @@ const Home = () => {
           <li>Python</li>
           <li>XML</li>
         </ul>
-        <p></p>
+        <p>there are also many other technologies i have worked with,</p>
+        <p>but i have chosen show these on the list because they are technologies</p>
+        <p>that i have worked alot with as of recent and or have the highest compitency with</p>
+        <p>i am allways looking for new technologies to experiment with to broaden my horizons</p>
+        <p>and i am allways looking for new projects to work on to gain more experience</p>
+        <p>if you want to see what projects i have worked on you can go to the Github page i have</p>
+        <p>in my navbar or if you want to go to my actual github profile it will be linked in my contact me page</p>
       </div>
     </div>
   );

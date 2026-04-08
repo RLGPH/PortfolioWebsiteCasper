@@ -11,6 +11,9 @@ export const Navigation = () => {
         <li className="navbarlist">
           <Link className="Link" to="/github">GitHub</Link>
         </li>
+        <li className="navbarlist">
+          <Link className="Link" to="/contact">Contact Me</Link>
+        </li>
       </ul>
     </nav>
   );

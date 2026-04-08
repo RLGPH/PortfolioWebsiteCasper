@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -5,8 +6,9 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="site-footer-split">
         <div>
-          <p className="text"
-          >Contact us</p>
+          <Link to="/contact" className="text">
+            Contact me
+          </Link>
         </div>
       </div>
     </footer>

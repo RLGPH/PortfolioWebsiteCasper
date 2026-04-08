@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import MainLayout from "./layouts/Mainlayout";
 import GithubRepoList from "./pages/GithubRepoList";
 import GithubCommitLog from "./pages/GithubCommitLog";
+import ContactMe from "./pages/ContactMe";
 
 function App() {
   return (
@@ -23,6 +24,12 @@ function App() {
       <Routes>
         <Route path="/github/:id" element={<MainLayout />}>
           <Route index element={<GithubCommitLog />} />  
+        </Route>
+      </Routes>
+      {/* CONTACT LAYOUT */}
+      <Routes>
+        <Route path="/contact" element={<MainLayout />}>
+          <Route index element={<ContactMe />} />
         </Route>
       </Routes>
     </BrowserRouter>
