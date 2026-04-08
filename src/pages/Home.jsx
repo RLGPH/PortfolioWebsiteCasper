@@ -46,6 +46,21 @@ const Home = () => {
 
       <div>
         <h2>About Me</h2>
+        <p>I am a passionate developer with experience in many technologies.</p>
+        <p>many of the technologies i have worked with include.</p>
+        <ul className='LeftAlign'>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>SQL</li>
+          <li>EntityFramwork</li>
+          <li>Docker</li>
+          <li>Git</li>
+          <li>Kubernetes</li>
+          <li>C#</li>
+          <li>Python</li>
+          <li>XML</li>
+        </ul>
+        <p></p>
       </div>
     </div>
   );

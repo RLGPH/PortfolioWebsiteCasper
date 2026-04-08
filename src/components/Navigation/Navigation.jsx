@@ -4,11 +4,11 @@ import "./Navigation.css";
 export const Navigation = () => {
   return (
     <nav>
-      <ul>
-        <li>
+      <ul className="navbar">
+        <li className="navbarlist">
           <Link className="Link" to="/">Home</Link>
         </li>
-        <li>
+        <li className="navbarlist">
           <Link className="Link" to="/github">GitHub</Link>
         </li>
       </ul>
