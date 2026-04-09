@@ -11,7 +11,7 @@ const GithubCommitLog = () => {
     const fetchRepoData = async () => {
       try {
         // Fetch API
-        const res = await fetch(`http://casp142b2.web.techcollege.dk/api/Github/${id}`);
+        const res = await fetch(`https://project-itjnj.vercel.app/api/github/${id}`);
         const data = await res.json();
 
         setRepo(data);
