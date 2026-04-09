@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="github" element={<GithubRepoList />} />
-          <Route path="github/:id" element={<GithubCommitLog />} />
+          <Route path=":id" element={<GithubCommitLog />} />
           <Route path="contact" element={<ContactMe />} />
         </Route>
       </Routes>
