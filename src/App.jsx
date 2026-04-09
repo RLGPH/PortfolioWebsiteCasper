@@ -1,7 +1,7 @@
 // App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import MainLayout from "src/layouts/MainLayout";
+import MainLayout from "./layouts/MainLayout";
 import GithubRepoList from "./pages/GithubRepoList";
 import GithubCommitLog from "./pages/GithubCommitLog";
 import ContactMe from "./pages/ContactMe";
