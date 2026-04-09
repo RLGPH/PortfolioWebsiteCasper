@@ -24,7 +24,7 @@ const ItemCard = ({ item }) => {
 
   if (!data) return <div className="item-card">Loading...</div>;
 
-  const localLink = `${window.location.origin}/github/${data.id ?? 0}`;
+  const localLink = `${window.location.origin}/PortfolioWebsiteCasper/github/${data.id ?? 0}`;
 
   return (
     <a href={localLink} className="item-card">
