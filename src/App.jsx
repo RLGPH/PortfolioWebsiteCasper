@@ -1,3 +1,4 @@
+// App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
@@ -7,7 +8,7 @@ import ContactMe from "./pages/ContactMe";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/PortfolioWebsiteCasper/">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
