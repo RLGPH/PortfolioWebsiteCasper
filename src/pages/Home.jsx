@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Portefølje</h1>
+      <h1>Portfolio</h1>
       <div>
         <p>This is the home page. Use the navigation to explore the app.</p>
       </div>
