@@ -7,7 +7,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const res = await fetch('https://api.allorigins.win/raw?url=http://casp142b2.web.techcollege.dk/api/Github');
+        const res = await fetch('https://project-itjnj.vercel.app/api/github');
         const data = await res.json();
         console.log('Fetched repos:', data);
 
