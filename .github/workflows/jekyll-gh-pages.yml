@@ -14,24 +14,25 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+    steps:
+      # 1. Checkout the repo
+      - uses: actions/checkout@v3
+
+      # 2. Setup Node.js
+      - uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      # 3. Install dependencies
+      - run: npm install
 
-      - name: Build Vite app
-        run: npm run build
+      # 4. Build Vite app
+      - run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 5. Deploy to GitHub Pages
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GH_PAT }}   # ✅ use PAT here
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # works for public repos
           publish_dir: ./dist
           publish_branch: gh-pages
