@@ -7,27 +7,25 @@ import ContactMe from "./pages/ContactMe";
 
 function App() {
   return (
-    <BrowserRouter>
+    // Set basename to your GitHub repo name
+    <BrowserRouter basename="/portfoliowebsitecasper/">
       <Routes>
         {/* MAIN LAYOUT */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
         </Route>
-      </Routes>
-      {/* GitHub LAYOUT */}
-      <Routes>
+
+        {/* GitHub LAYOUT */}
         <Route path="/github" element={<MainLayout />}>
           <Route index element={<GithubRepoList />} />
         </Route>
-      </Routes>
-      {/* COMMIT LOG LAYOUT */}
-      <Routes>
+
+        {/* COMMIT LOG LAYOUT */}
         <Route path="/github/:id" element={<MainLayout />}>
           <Route index element={<GithubCommitLog />} />  
         </Route>
-      </Routes>
-      {/* CONTACT LAYOUT */}
-      <Routes>
+
+        {/* CONTACT LAYOUT */}
         <Route path="/contact" element={<MainLayout />}>
           <Route index element={<ContactMe />} />
         </Route>
