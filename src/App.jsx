@@ -1,23 +1,17 @@
-// App.jsx
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import MainLayout from "./layouts/Mainlayout";
-import GithubRepoList from "./pages/GithubRepoList";
-import GithubCommitLog from "./pages/GithubCommitLog";
-import ContactMe from "./pages/ContactMe";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter basename="/PortfolioWebsiteCasper/">
+    <HashRouter basename="/PortfolioWebsiteCasper/">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="github" element={<GithubRepoList />} />
-          <Route path=":id" element={<GithubCommitLog />} />
+          <Route path="github/:id" element={<GithubCommitLog />} />
           <Route path="contact" element={<ContactMe />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
