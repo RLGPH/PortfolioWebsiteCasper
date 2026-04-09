@@ -7,7 +7,7 @@ const GithubRepoList = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const res = await fetch('http://casp142b2.web.techcollege.dk/api/Github');
+        const res = await fetch('https://project-itjnj.vercel.app/api/github');
         const data = await res.json();
         console.log('Fetched repos:', data);
         setRepos(data);
