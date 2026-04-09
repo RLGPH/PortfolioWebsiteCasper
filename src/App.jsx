@@ -1,15 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import MainLayout from "./layouts/Mainlayout";
+import MainLayout from "./layouts/MainLayout";
 import GithubRepoList from "./pages/GithubRepoList";
 import GithubCommitLog from "./pages/GithubCommitLog";
 import ContactMe from "./pages/ContactMe";
 
 function App() {
   return (
-    <BrowserRouter basename="/portfoliowebsitecasper/">
+    <BrowserRouter>
       <Routes>
-        {/* MAIN LAYOUT */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="github" element={<GithubRepoList />} />
