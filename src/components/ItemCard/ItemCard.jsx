@@ -27,7 +27,7 @@ const ItemCard = ({ item }) => {
   const localLink = `${window.location.origin}/PortfolioWebsiteCasper/github/${data.id ?? 0}`;
 
   return (
-    <a href={localLink} className="item-card">
+    <a href={data.url} className="item-card" target="_blank" rel="noopener noreferrer">
       <h3 className="repo-title">{data.url?.split('/').pop() || 'Unknown'}</h3>
       <p className="repo-readme">{data.readme || 'No README available'}</p>
     </a>
